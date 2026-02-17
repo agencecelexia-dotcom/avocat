@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cabinet Igor — Site Web — Première Version</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f5f0e8;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+        .header {
+            background: linear-gradient(135deg, #0d1b2a 0%, #1b2d45 100%);
+            padding: 40px 30px;
+            text-align: center;
+        }
+        .logo {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: rgba(200, 169, 110, 0.15);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .logo svg {
+            width: 32px;
+            height: 32px;
+            color: #c8a96e;
+        }
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            color: white;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .header p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .content {
+            padding: 40px 30px;
+        }
+        .greeting {
+            color: #0d1b2a;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+        .section {
+            margin-bottom: 32px;
+        }
+        .section h2 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #0d1b2a;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #c8a96e;
+            display: inline-block;
+        }
+        .section p {
+            color: #6c7a89;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+        .feature-box {
+            background: #f5f0e8;
+            border-left: 4px solid #c8a96e;
+            padding: 16px;
+            margin: 16px 0;
+            border-radius: 8px;
+        }
+        .feature-box strong {
+            color: #0d1b2a;
+            display: block;
+            margin-bottom: 4px;
+        }
+        .feature-box p {
+            font-size: 13px;
+            color: #6c7a89;
+            margin: 0;
+        }
+        .code-box {
+            background: #0d1b2a;
+            color: #c8a96e;
+            padding: 16px;
+            border-radius: 8px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            letter-spacing: 4px;
+            margin: 16px 0;
+        }
+        .highlight {
+            color: #c8a96e;
+            font-weight: 600;
+        }
+        .cta-section {
+            background: linear-gradient(135deg, rgba(200, 169, 110, 0.1) 0%, rgba(27, 45, 69, 0.05) 100%);
+            border: 1px solid #c8a96e/20;
+            padding: 24px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 32px 0;
+        }
+        .cta-section h3 {
+            color: #0d1b2a;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .cta-section p {
+            color: #6c7a89;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #c8a96e 0%, #b08d4f 100%);
+            color: #0d1b2a;
+            padding: 12px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(200, 169, 110, 0.3);
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 16px 0;
+        }
+        .info-card {
+            background: #f5f0e8;
+            padding: 16px;
+            border-radius: 8px;
+        }
+        .info-card-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: #6c7a89;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+        .info-card-value {
+            font-size: 18px;
+            font-weight: 600;
+            color: #0d1b2a;
+        }
+        .footer {
+            background: #f9f7f4;
+            padding: 30px;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+        }
+        .footer p {
+            font-size: 13px;
+            color: #6c7a89;
+            margin-bottom: 12px;
+        }
+        .footer-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: #0d1b2a;
+            margin-bottom: 8px;
+        }
+        .signature {
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid #e2e8f0;
+            font-size: 13px;
+        }
+        .signature p {
+            color: #6c7a89;
+            margin-bottom: 6px;
+        }
+        .signature-name {
+            font-weight: 600;
+            color: #0d1b2a;
+        }
+        .link {
+            color: #c8a96e;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .link:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 600px) {
+            .container {
+                margin: 0;
+                border-radius: 0;
+            }
+            .content {
+                padding: 24px 20px;
+            }
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
+                </svg>
+            </div>
+            <h1>Cabinet Igor</h1>
+            <p>Première version — Site web</p>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <div class="greeting">Bonjour Maître Igor,</div>
+
+            <div class="section">
+                <p>Vous trouverez ci-dessous votre nouveau site web. C'est une <span class="highlight">première version</span> conçue pour vous permettre de visualiser le concept et discuter des améliorations possibles.</p>
+            </div>
+
+            <!-- Access Info -->
+            <div class="section">
+                <h2>🔗 Accéder au site</h2>
+                <p>Votre site est actuellement accessible à l'adresse :</p>
+                <div style="background: #f5f0e8; padding: 14px; border-radius: 8px; margin: 12px 0; word-break: break-all;">
+                    <strong style="color: #0d1b2a;">https://avocat-mu.vercel.app/</strong>
+                </div>
+            </div>
+
+            <!-- Important Notes -->
+            <div class="section">
+                <h2>⚠️ Points importants</h2>
+
+                <div class="feature-box">
+                    <strong>🕵️ Fonctionnalité admin cachée</strong>
+                    <p>Un espace administration est intégré pour gérer vos demandes de contact. Accédez-y avec le code secret.</p>
+                </div>
+
+                <div class="feature-box">
+                    <strong>🔐 Code d'accès admin</strong>
+                    <p>Utilisez le code ci-dessous pour vous connecter à l'espace d'administration :</p>
+                    <div class="code-box">1234</div>
+                </div>
+
+                <div class="feature-box">
+                    <strong>🔍 Pas indexé sur Google</strong>
+                    <p>Le site n'est actuellement <strong>pas référencé</strong>. Seule l'URL directe permet d'y accéder. C'est volontaire pour cette phase de test.</p>
+                </div>
+            </div>
+
+            <!-- Next Steps -->
+            <div class="cta-section">
+                <h3>📅 Prochaine étape : RDV de discussion</h3>
+                <p>L'objectif est de prendre <strong>un rendez-vous ensemble</strong> pour discuter du site, recueillir vos retours et valider les ajustements.</p>
+                <p style="font-size: 13px; color: #c8a96e; margin-bottom: 0;">Appelez-moi dès que vous avez un moment libre ! ☎️</p>
+            </div>
+
+            <!-- Booking Info -->
+            <div class="section">
+                <h2>📆 Prendre rendez-vous</h2>
+                <p>Vous pouvez me contacter directement ou utiliser notre formulaire de contact sur le site pour fixer un créneau qui vous convient.</p>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <div class="info-card-title">Formulaire</div>
+                        <div class="info-card-value" style="font-size: 14px; color: #c8a96e;">agencecelexia.fr</div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-card-title">Via la signature</div>
+                        <div class="info-card-value" style="font-size: 13px; color: #0d1b2a;">Voir ci-dessous</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Summary -->
+            <div class="section">
+                <h2>📋 Récapitulatif</h2>
+                <div style="background: #f5f0e8; padding: 16px; border-radius: 8px; font-size: 13px; color: #6c7a89;">
+                    <p><strong style="color: #0d1b2a;">✓</strong> Site en ligne : <a href="https://avocat-mu.vercel.app/" class="link">avocat-mu.vercel.app</a></p>
+                    <p><strong style="color: #0d1b2a;">✓</strong> Admin accessible avec code <strong>1234</strong></p>
+                    <p><strong style="color: #0d1b2a;">✓</strong> Pas indexé (accès direct uniquement)</p>
+                    <p><strong style="color: #0d1b2a;">✓</strong> Première version — à affiner ensemble</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-brand">Agence Celexia</div>
+            <p>Design & Développement Web</p>
+
+            <div class="signature">
+                <p class="signature-name">📞 Me contacter</p>
+                <p>N'hésitez pas à m'appeler dès que possible pour discuter du projet !</p>
+                <p><a href="https://agencecelexia.fr" class="link">agencecelexia.fr</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
