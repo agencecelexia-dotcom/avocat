@@ -210,32 +210,93 @@
     });
   });
 
+  /* ── Analytics tracking ── */
+  function trackEvent(type, label) {
+    try {
+      var payload = {
+        type: type,
+        page: window.location.pathname,
+        referrer: document.referrer || undefined
+      };
+      if (label) payload.label = label;
+      fetch('/api/analytics/track', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      }).catch(function () {});
+    } catch (e) { /* silently fail */ }
+  }
+
+  // Track page view
+  trackEvent('page_view');
+
+  // Track CTA clicks via data-track attribute
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-track]');
+    if (el) {
+      trackEvent('cta_click', el.getAttribute('data-track') || el.textContent.trim());
+    }
+  });
+
   /* ── Contact form ── */
   var contactForm = document.getElementById('contactForm');
   var formSuccess = document.getElementById('formSuccess');
 
   if (contactForm) {
+    // Track form start on first interaction
+    var formStarted = false;
+    contactForm.addEventListener('focusin', function () {
+      if (!formStarted) {
+        formStarted = true;
+        trackEvent('form_start');
+      }
+    });
+
     contactForm.addEventListener('submit', function (e) {
       e.preventDefault();
 
       var btn = contactForm.querySelector('button[type="submit"]');
-      if (!btn || btn.disabled) return; // Prevent double submit
+      if (!btn || btn.disabled) return;
 
       var originalHTML = btn.innerHTML;
       btn.disabled = true;
       btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="spin-icon" aria-hidden="true"><path d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/></svg><span>Envoi en cours\u2026</span>';
 
-      // Simulate send — replace with real fetch/FormData POST
-      setTimeout(function () {
+      // Collect form data
+      var formData = {
+        firstName: contactForm.querySelector('#prenom').value,
+        lastName: contactForm.querySelector('#nom').value,
+        email: contactForm.querySelector('#email').value,
+        phone: (contactForm.querySelector('#telephone') || {}).value || '',
+        domaine: contactForm.querySelector('#domaine').value,
+        urgence: contactForm.querySelector('#urgence').value,
+        situationDescription: contactForm.querySelector('#message').value
+      };
+
+      fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      }).then(function (res) {
         btn.disabled = false;
         btn.innerHTML = originalHTML;
-        contactForm.reset();
-        if (formSuccess) {
-          formSuccess.classList.add('visible');
-          formSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-          setTimeout(function () { formSuccess.classList.remove('visible'); }, 8000);
+        if (res.ok) {
+          trackEvent('form_submit');
+          contactForm.reset();
+          formStarted = false;
+          if (formSuccess) {
+            formSuccess.classList.add('visible');
+            formSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            setTimeout(function () { formSuccess.classList.remove('visible'); }, 8000);
+          }
+        } else {
+          alert('Une erreur est survenue. Veuillez réessayer.');
         }
-      }, 1800);
+      }).catch(function () {
+        btn.disabled = false;
+        btn.innerHTML = originalHTML;
+        alert('Erreur de connexion. Veuillez réessayer.');
+      });
     });
   }
 

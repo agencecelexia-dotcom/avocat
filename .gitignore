@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+
+# Next.js
+.next/
+out/
+
+# Storage (JSON data files)
+storage/
+
+# Environment
+.env
+.env.local
+
+# OS
+.DS_Store
+Thumbs.db
