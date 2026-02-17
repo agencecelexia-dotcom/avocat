@@ -1343,6 +1343,51 @@ strong { font-weight: 600; }
 }
 
 /* ============================================================
+   LEGAL PAGES (mentions légales, politique de confidentialité)
+   ============================================================ */
+.legal-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.legal-block {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+.legal-block:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+.legal-block h2 {
+  font-family: var(--ff-serif);
+  font-size: 1.35rem;
+  color: var(--navy);
+  margin-bottom: 1rem;
+}
+.legal-block p {
+  margin-bottom: .75rem;
+  line-height: 1.8;
+}
+.legal-block ul {
+  margin: .75rem 0 1rem 1.5rem;
+  list-style: disc;
+}
+.legal-block li {
+  margin-bottom: .4rem;
+  line-height: 1.7;
+}
+.legal-block a {
+  color: var(--gold);
+  text-decoration: underline;
+}
+.legal-block a:hover {
+  color: var(--gold-dark);
+}
+.legal-block em {
+  color: var(--muted);
+}
+
+/* ============================================================
    PRINT STYLES
    ============================================================ */
 @media print {
