@@ -166,14 +166,15 @@ strong { font-weight: 600; }
 
 /* CTA link */
 .nav-cta {
-  padding: .45rem 1.1rem !important;
-  border: 1px solid var(--gold) !important;
-  border-radius: var(--radius-sm) !important;
-  color: var(--gold) !important;
-  transition: background var(--transition), color var(--transition) !important;
+  padding: .45rem 1.1rem;
+  border: 1px solid var(--gold);
+  border-radius: var(--radius-sm);
+  color: var(--gold);
+  transition: background var(--transition), color var(--transition);
 }
-.nav-cta::after { display: none !important; }
-.nav-cta:hover { background: var(--gold) !important; color: var(--navy) !important; }
+.nav-cta::after { display: none; }
+.nav-cta:hover,
+.nav-cta.active { background: var(--gold); color: var(--navy); }
 
 /* Mobile toggle */
 .nav-toggle {
@@ -928,13 +929,6 @@ strong { font-weight: 600; }
   transition: transform var(--transition);
 }
 .faq-question.open .faq-chevron { transform: rotate(180deg); }
-.faq-answer {
-  display: none;
-  padding: 1.25rem 1.5rem;
-  background: var(--white);
-  border-top: 1px solid var(--border);
-}
-.faq-answer.open { display: block; }
 .faq-answer p { font-size: .92rem; color: var(--text-mid); }
 
 /* ============================================================
@@ -1201,4 +1195,169 @@ strong { font-weight: 600; }
 @media (max-width: 480px) {
   .stats-grid { grid-template-columns: 1fr 1fr; }
   .principes-grid { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   FOCUS & ACCESSIBILITY STATES
+   ============================================================ */
+.btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+.btn-primary:focus-visible {
+  outline-color: var(--navy);
+}
+.nav-link:focus-visible,
+.nav-dropdown-btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+.nav-cta:focus-visible {
+  outline: 2px solid var(--gold-light);
+  outline-offset: 3px;
+}
+#navToggle:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+.faq-question:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: -2px;
+}
+.form-group input:focus-visible,
+.form-group select:focus-visible,
+.form-group textarea:focus-visible {
+  outline: none;
+}
+.domaine-home-card:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+.footer-links a:focus-visible,
+.footer-bottom-links a:focus-visible {
+  outline: 1px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* Disabled button */
+.btn:disabled,
+.btn[disabled] {
+  opacity: .65;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Select dropdown arrow */
+.form-group select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5l5 5 5-5' stroke='%234a5568' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+}
+
+/* FAQ smooth animation */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 1.5rem;
+  transition: max-height .35s ease, padding .35s ease;
+  display: block;
+  border-top: none;
+}
+.faq-answer.open {
+  max-height: 500px;
+  padding: 1.25rem 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+/* Matiere aside button spacing */
+.matiere-aide .btn {
+  margin-top: 1.25rem;
+}
+.matiere-aide--urgent .btn-urgent {
+  background: var(--urgent);
+  color: #fff;
+}
+.matiere-aide--urgent .btn-urgent:hover {
+  background: #b02a37;
+}
+
+/* CTA banner actions wrapper */
+.cta-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+/* Map iframe (contact page) */
+.map-iframe {
+  width: 100%;
+  height: 260px;
+  border: none;
+  border-radius: 8px;
+}
+
+/* Profil page sidebar contact */
+.profil-sidebar-contact {
+  margin-top: .5rem;
+}
+
+/* Skip to content link */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  padding: .75rem 1.5rem;
+  background: var(--gold);
+  color: var(--navy);
+  font-weight: 700;
+  font-size: .88rem;
+  border-radius: var(--radius-sm);
+  z-index: 9999;
+  transition: top .2s ease;
+}
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* Fonction publique SVG icon replacement */
+.fp-svg-icon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  background: var(--gold-pale);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.fp-svg-icon svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--gold);
+}
+
+/* ============================================================
+   PRINT STYLES
+   ============================================================ */
+@media print {
+  #navbar, .hero-scroll, .nav-toggle, .cta-banner, .hero-overlay, .hero-bg,
+  .page-header-bg, .btn, .skip-link { display: none !important; }
+  body { color: #000; background: #fff; font-size: 12pt; }
+  .hero { min-height: auto; background: none; padding: 2rem 0; }
+  .hero-content { color: #000; }
+  .hero-title, .hero-name { color: #000; }
+  .hero-tagline, .hero-desc { color: #333; }
+  .section { padding: 1.5rem 0; }
+  .footer { background: none; color: #333; padding: 1rem 0; }
+  .matiere-content { grid-template-columns: 1fr; }
+  .matiere-aside { border-left: none; border-top: 1px solid #ccc; }
+  .faq-answer { max-height: none; display: block; padding: .75rem 0; }
+  a[href]::after { content: " (" attr(href) ")"; font-size: 9pt; color: #666; }
+  .nav-link::after, .nav-cta { display: none; }
 }

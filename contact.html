@@ -9,8 +9,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <meta name="theme-color" content="#0d1b2a" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖</text></svg>" />
+  <meta property="og:title" content="Contact — Maître Igor MINKO MI NZE" />
+  <meta property="og:description" content="Contactez Maître Igor MINKO MI NZE, avocat à Paris. Prise de rendez-vous, formulaire de contact et informations pratiques." />
+  <meta property="og:type" content="website" />
 </head>
 <body class="page-inner">
+  <a href="#main-content" class="skip-link">Aller au contenu principal</a>
 
   <!-- ===== NAVIGATION ===== -->
   <nav id="navbar" class="scrolled">
@@ -26,7 +32,7 @@
         <li><a href="index.html" class="nav-link">Accueil</a></li>
         <li><a href="profil.html" class="nav-link">Le Cabinet</a></li>
         <li class="nav-dropdown">
-          <button class="nav-link nav-dropdown-btn">Domaines <svg viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+          <button class="nav-link nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">Domaines <svg viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
           <ul class="nav-dropdown-menu">
             <li><a href="droit-etrangers.html">Droit des Étrangers</a></li>
             <li><a href="droit-public.html">Droit Public</a></li>
@@ -37,11 +43,13 @@
     </div>
   </nav>
 
+  <main id="main-content">
+
   <!-- ===== PAGE HEADER ===== -->
   <header class="page-header">
     <div class="page-header-bg"></div>
     <div class="container">
-      <nav class="breadcrumb">
+      <nav class="breadcrumb" aria-label="Fil d'Ariane">
         <a href="index.html">Accueil</a>
         <span>/</span>
         <span>Contact</span>
@@ -64,7 +72,7 @@
             <h3>Coordonnées du cabinet</h3>
             <div class="ci-item">
               <div class="ci-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
                   <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
                   <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
                 </svg>
@@ -76,7 +84,7 @@
             </div>
             <div class="ci-item">
               <div class="ci-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
                   <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                 </svg>
               </div>
@@ -87,7 +95,7 @@
             </div>
             <div class="ci-item">
               <div class="ci-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
                   <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
                 </svg>
               </div>
@@ -98,7 +106,7 @@
             </div>
             <div class="ci-item">
               <div class="ci-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
                   <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                 </svg>
               </div>
@@ -118,7 +126,7 @@
             <h4>Localisation</h4>
             <iframe
               src="https://www.openstreetmap.org/export/embed.html?bbox=2.3430%2C48.8570%2C2.3510%2C48.8610&layer=mapnik&marker=48.8589517%2C2.3480838"
-              style="width:100%;height:260px;border:none;border-radius:8px;"
+              class="map-iframe"
               title="Localisation du cabinet de Maître MINKO MI NZE"
               loading="lazy"
             ></iframe>
@@ -215,19 +223,19 @@
                 </label>
               </div>
               <div class="form-notice">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:16px;height:16px;flex-shrink:0;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
                   <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
                 </svg>
                 <p>Toutes les informations transmises sont couvertes par le secret professionnel de l'avocat et traitées de manière strictement confidentielle.</p>
               </div>
               <button type="submit" class="btn btn-primary btn-full">
                 <span>Envoyer le message</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                   <path d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
                 </svg>
               </button>
-              <div class="form-success" id="formSuccess">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <div class="form-success" id="formSuccess" role="alert" aria-live="polite">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                   <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                 </svg>
                 <div>
@@ -254,7 +262,7 @@
         <div class="faq-item reveal">
           <button class="faq-question">
             <span>Comment se déroule le premier entretien ?</span>
-            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7"/></svg>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 9l-7 7-7-7"/></svg>
           </button>
           <div class="faq-answer">
             <p>Le premier entretien est l'occasion de présenter votre situation à Maître MINKO MI NZE. Il prend connaissance de vos documents, analyse les enjeux juridiques et vous expose les options disponibles ainsi que la stratégie recommandée. Cet entretien peut se tenir en présentiel au cabinet ou à distance (visioconférence). Sa durée est généralement d'une heure.</p>
@@ -263,7 +271,7 @@
         <div class="faq-item reveal reveal-delay-1">
           <button class="faq-question">
             <span>Quels documents apporter pour la première consultation ?</span>
-            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7"/></svg>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 9l-7 7-7-7"/></svg>
           </button>
           <div class="faq-answer">
             <p>Apportez tous les documents en lien avec votre situation : décisions administratives reçues (refus, OQTF, convocations…), vos titres de séjour actuels et anciens, votre passeport, tout courrier échangé avec l'administration, et les délais mentionnés dans les décisions. En droit des étrangers : attestation de domicile, preuves de liens avec la France, ressources. Plus votre dossier est complet, plus l'analyse sera précise.</p>
@@ -272,7 +280,7 @@
         <div class="faq-item reveal reveal-delay-2">
           <button class="faq-question">
             <span>Proposez-vous des consultations à distance ?</span>
-            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7"/></svg>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 9l-7 7-7-7"/></svg>
           </button>
           <div class="faq-answer">
             <p>Oui. Le cabinet propose des consultations par visioconférence pour les clients ne pouvant pas se déplacer à Paris. Les pièces peuvent être transmises préalablement par email. Cette formule est particulièrement adaptée aux clients situés hors de la région parisienne ou en rétention administrative.</p>
@@ -281,7 +289,7 @@
         <div class="faq-item reveal">
           <button class="faq-question">
             <span>Comment sont fixés les honoraires ?</span>
-            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7"/></svg>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 9l-7 7-7-7"/></svg>
           </button>
           <div class="faq-answer">
             <p>Les honoraires sont fixés librement, en accord avec le client, lors de la signature de la convention d'honoraires. Ils tiennent compte de la complexité du dossier, du temps consacré, des diligences à effectuer et des résultats obtenus. Maître MINKO MI NZE pratique différents modes de facturation : forfait, taux horaire, ou mixte. Un devis précis est établi dès la première consultation.</p>
@@ -290,7 +298,7 @@
         <div class="faq-item reveal reveal-delay-1">
           <button class="faq-question">
             <span>Puis-je bénéficier de l'aide juridictionnelle ?</span>
-            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7"/></svg>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 9l-7 7-7-7"/></svg>
           </button>
           <div class="faq-answer">
             <p>Oui. L'aide juridictionnelle (totale ou partielle) est accessible aux personnes dont les ressources n'excèdent pas un certain plafond. Elle permet à l'État de prendre en charge tout ou partie des honoraires de l'avocat. Maître MINKO MI NZE accompagne ses clients dans les démarches d'obtention de l'aide juridictionnelle. Les demandeurs d'asile et certaines catégories d'étrangers peuvent bénéficier de conditions spécifiques.</p>
@@ -299,7 +307,7 @@
         <div class="faq-item reveal reveal-delay-2">
           <button class="faq-question">
             <span>Êtes-vous disponible en cas d'urgence absolue (rétention, expulsion) ?</span>
-            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7"/></svg>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 9l-7 7-7-7"/></svg>
           </button>
           <div class="faq-answer">
             <p>Oui. En cas d'urgence absolue (placement en rétention administrative, OQTF à exécuter immédiatement, expulsion imminente), Maître MINKO MI NZE s'efforce de prendre en charge le dossier en priorité. Utilisez le formulaire de contact en signalant l'extrême urgence, ou contactez directement le cabinet. Les procédures d'urgence (JLD, référé liberté) permettent d'obtenir une décision en quelques heures.</p>
@@ -308,6 +316,8 @@
       </div>
     </div>
   </section>
+
+  </main>
 
   <!-- ===== FOOTER ===== -->
   <footer class="footer">

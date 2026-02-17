@@ -9,8 +9,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <meta name="theme-color" content="#0d1b2a" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖</text></svg>" />
+  <meta property="og:title" content="Droit des Étrangers — Maître Igor MINKO MI NZE" />
+  <meta property="og:description" content="Avocat spécialisé en droit des étrangers à Paris : titre de séjour, asile, OQTF, regroupement familial, nationalité, rétention." />
+  <meta property="og:type" content="website" />
 </head>
 <body class="page-inner page-etrangers">
+  <a href="#main-content" class="skip-link">Aller au contenu principal</a>
 
   <!-- ===== NAVIGATION ===== -->
   <nav id="navbar" class="scrolled">
@@ -26,7 +32,7 @@
         <li><a href="index.html" class="nav-link">Accueil</a></li>
         <li><a href="profil.html" class="nav-link">Le Cabinet</a></li>
         <li class="nav-dropdown">
-          <button class="nav-link nav-dropdown-btn active">Domaines <svg viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+          <button class="nav-link nav-dropdown-btn active" aria-haspopup="true" aria-expanded="false">Domaines <svg viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
           <ul class="nav-dropdown-menu">
             <li><a href="droit-etrangers.html" class="current">Droit des Étrangers</a></li>
             <li><a href="droit-public.html">Droit Public</a></li>
@@ -37,11 +43,12 @@
     </div>
   </nav>
 
+  <main id="main-content">
   <!-- ===== PAGE HEADER ===== -->
   <header class="page-header page-header--etrangers">
     <div class="page-header-bg"></div>
     <div class="container">
-      <nav class="breadcrumb">
+      <nav class="breadcrumb" aria-label="Fil d'Ariane">
         <a href="index.html">Accueil</a>
         <span>/</span>
         <span>Droit des Étrangers</span>
@@ -73,7 +80,7 @@
       <!-- Alerte urgence -->
       <div class="urgence-banner reveal">
         <div class="urgence-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
             <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
           </svg>
         </div>
@@ -99,7 +106,7 @@
       <div id="sejour" class="matiere-block reveal">
         <div class="matiere-header">
           <div class="matiere-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
               <path d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"/>
             </svg>
           </div>
@@ -171,7 +178,7 @@
                 <li>Obtenir en urgence une injonction de délivrance</li>
                 <li>Accompagner les changements de statut</li>
               </ul>
-              <a href="contact.html" class="btn btn-primary" style="margin-top:1.25rem;">Consulter</a>
+              <a href="contact.html" class="btn btn-primary">Consulter</a>
             </div>
           </div>
         </div>
@@ -181,7 +188,7 @@
       <div id="asile" class="matiere-block reveal">
         <div class="matiere-header">
           <div class="matiere-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
               <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
             </svg>
           </div>
@@ -224,7 +231,7 @@
                 <li>Contester les décisions de procédure accélérée</li>
                 <li>Défendre en cas de clôture de dossier</li>
               </ul>
-              <a href="contact.html" class="btn btn-primary" style="margin-top:1.25rem;">Consulter</a>
+              <a href="contact.html" class="btn btn-primary">Consulter</a>
             </div>
           </div>
         </div>
@@ -234,7 +241,7 @@
       <div id="oqtf" class="matiere-block matiere-block--urgent reveal">
         <div class="matiere-header">
           <div class="matiere-icon matiere-icon--urgent">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
               <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
             </svg>
           </div>
@@ -289,7 +296,7 @@
                 <li>Représentation devant le TA</li>
                 <li>Assistance JLD si rétention</li>
               </ul>
-              <a href="contact.html" class="btn btn-primary" style="margin-top:1.25rem; background:#dc3545;">Urgence — Consulter maintenant</a>
+              <a href="contact.html" class="btn btn-primary btn-urgent">Urgence — Consulter maintenant</a>
             </div>
           </div>
         </div>
@@ -299,7 +306,7 @@
       <div id="famille" class="matiere-block reveal">
         <div class="matiere-header">
           <div class="matiere-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
               <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
             </svg>
           </div>
@@ -333,7 +340,7 @@
                 <li>Recours contre les refus</li>
                 <li>Contentieux devant le TA</li>
               </ul>
-              <a href="contact.html" class="btn btn-primary" style="margin-top:1.25rem;">Consulter</a>
+              <a href="contact.html" class="btn btn-primary">Consulter</a>
             </div>
           </div>
         </div>
@@ -343,7 +350,7 @@
       <div id="nationalite" class="matiere-block reveal">
         <div class="matiere-header">
           <div class="matiere-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
               <path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
             </svg>
           </div>
@@ -381,7 +388,7 @@
                 <li>Recours contre l'ajournement</li>
                 <li>Recours contre le rejet</li>
               </ul>
-              <a href="contact.html" class="btn btn-primary" style="margin-top:1.25rem;">Consulter</a>
+              <a href="contact.html" class="btn btn-primary">Consulter</a>
             </div>
           </div>
         </div>
@@ -391,7 +398,7 @@
       <div id="retention" class="matiere-block matiere-block--urgent reveal">
         <div class="matiere-header">
           <div class="matiere-icon matiere-icon--urgent">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
               <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
             </svg>
           </div>
@@ -426,7 +433,7 @@
                 <li>Former un recours TA en parallèle</li>
                 <li>Obtenir la remise en liberté</li>
               </ul>
-              <a href="contact.html" class="btn btn-primary" style="margin-top:1.25rem; background:#dc3545;">Urgence — Nous appeler</a>
+              <a href="contact.html" class="btn btn-primary btn-urgent">Urgence — Nous appeler</a>
             </div>
           </div>
         </div>
@@ -436,7 +443,7 @@
       <div id="visa" class="matiere-block reveal">
         <div class="matiere-header">
           <div class="matiere-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
               <path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
             </svg>
           </div>
@@ -468,7 +475,7 @@
                 <li>Recours TA de Nantes</li>
                 <li>Dossier renforcé pour une nouvelle demande</li>
               </ul>
-              <a href="contact.html" class="btn btn-primary" style="margin-top:1.25rem;">Consulter</a>
+              <a href="contact.html" class="btn btn-primary">Consulter</a>
             </div>
           </div>
         </div>
@@ -488,7 +495,7 @@
         <div class="faq-item reveal">
           <button class="faq-question">
             <span>Quand faut-il consulter un avocat en droit des étrangers ?</span>
-            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7"/></svg>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 9l-7 7-7-7"/></svg>
           </button>
           <div class="faq-answer">
             <p>Le plus tôt possible. En droit des étrangers, les délais sont souvent très courts et une erreur peut être difficile à corriger. Il est conseillé de consulter un avocat dès la réception d'une décision défavorable (refus, OQTF, placement en rétention), mais également en amont pour sécuriser une demande importante (premier titre de séjour, naturalisation, asile).</p>
@@ -497,7 +504,7 @@
         <div class="faq-item reveal reveal-delay-1">
           <button class="faq-question">
             <span>Puis-je rester en France pendant le recours contre une OQTF ?</span>
-            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7"/></svg>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 9l-7 7-7-7"/></svg>
           </button>
           <div class="faq-answer">
             <p>Cela dépend du type d'OQTF. Pour une OQTF avec délai de 30 jours, le recours devant le Tribunal Administratif suspend automatiquement l'exécution pendant l'instance. Pour une OQTF sans délai, une demande de référé suspension peut être nécessaire pour suspendre l'exécution. Il est impératif de consulter un avocat immédiatement pour connaître votre situation précise.</p>
@@ -506,7 +513,7 @@
         <div class="faq-item reveal reveal-delay-2">
           <button class="faq-question">
             <span>Combien de temps dure une procédure devant le Tribunal Administratif ?</span>
-            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7"/></svg>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 9l-7 7-7-7"/></svg>
           </button>
           <div class="faq-answer">
             <p>Les délais varient selon la nature du recours. Pour un recours classique contre une décision administrative (refus de titre de séjour, OQTF), les délais sont légalement encadrés et peuvent être de quelques semaines à quelques mois. En procédure d'urgence (référé), une décision peut intervenir en 48 à 72 heures. Maître MINKO MI NZE vous informera des délais applicables à votre situation précise.</p>
@@ -515,7 +522,7 @@
         <div class="faq-item reveal">
           <button class="faq-question">
             <span>Est-il possible de bénéficier de l'aide juridictionnelle ?</span>
-            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7"/></svg>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 9l-7 7-7-7"/></svg>
           </button>
           <div class="faq-answer">
             <p>Oui. L'aide juridictionnelle permet aux personnes dont les ressources sont insuffisantes de bénéficier d'une prise en charge totale ou partielle des honoraires d'avocat par l'État. Les ressortissants étrangers en situation régulière et certains étrangers en situation irrégulière (notamment les demandeurs d'asile) peuvent y prétendre. Maître MINKO MI NZE vous accompagne dans ces démarches.</p>
@@ -524,7 +531,7 @@
         <div class="faq-item reveal reveal-delay-1">
           <button class="faq-question">
             <span>Que faire si ma demande d'asile est rejetée par l'OFPRA ?</span>
-            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7"/></svg>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 9l-7 7-7-7"/></svg>
           </button>
           <div class="faq-answer">
             <p>En cas de rejet par l'OFPRA, vous disposez d'un délai d'un mois pour former un recours devant la CNDA (Cour Nationale du Droit d'Asile). Ce recours est suspensif : vous pouvez rester en France pendant la procédure. La CNDA réexamine votre demande et peut accorder le statut de réfugié ou la protection subsidiaire même si l'OFPRA avait rejeté. Maître MINKO MI NZE peut vous représenter devant la CNDA et plaider votre cause en audience.</p>
@@ -533,7 +540,7 @@
         <div class="faq-item reveal reveal-delay-2">
           <button class="faq-question">
             <span>Comment se déroule une audience devant la CNDA ?</span>
-            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7"/></svg>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 9l-7 7-7-7"/></svg>
           </button>
           <div class="faq-answer">
             <p>L'audience devant la CNDA peut se tenir en formation collégiale (3 membres) ou à juge unique. Elle comprend l'exposé du rapporteur, les questions posées au requérant (avec interprète si nécessaire) et la plaidoirie de l'avocat. L'audience dure généralement entre 20 et 45 minutes. La décision est ensuite rendue dans un délai de quelques semaines à quelques mois. Maître MINKO MI NZE vous prépare à chaque étape de cette audience.</p>
@@ -549,13 +556,15 @@
       <div class="cta-banner-content reveal">
         <h2>Votre situation en droit des étrangers mérite une défense experte</h2>
         <p>Prenez contact avec Maître MINKO MI NZE pour analyser votre dossier et définir la meilleure stratégie.</p>
-        <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-top:1rem;">
+        <div class="cta-actions">
           <a href="contact.html" class="btn btn-primary">Prendre rendez-vous</a>
           <a href="droit-public.html" class="btn btn-secondary">Voir aussi : Droit Public →</a>
         </div>
       </div>
     </div>
   </section>
+
+  </main>
 
   <!-- ===== FOOTER ===== -->
   <footer class="footer">
@@ -584,6 +593,7 @@
             <li><a href="#famille">Regroupement familial</a></li>
             <li><a href="#nationalite">Nationalité</a></li>
             <li><a href="#retention">Rétention administrative</a></li>
+            <li><a href="#visa">Refus de visa</a></li>
           </ul>
         </div>
         <div class="footer-legal-info">
