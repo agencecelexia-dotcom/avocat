@@ -44,6 +44,7 @@ interface Sub {
   read: boolean;
 }
 interface AggData {
+  isDemo: boolean;
   totalSubmissions: number;
   unreadCount: number;
   urgentCount: number;
@@ -508,17 +509,21 @@ export default function DashboardClient({ data }: { data: AggData }) {
 
   /* ── HEADER BAR ── */
   const header = (
-    <div className="sticky top-0 z-20 bg-white/80 backdrop-blur-sm border-b border-slate-200/60 px-4 sm:px-6 py-3 flex items-center gap-4">
+    <div className="sticky top-0 z-20 bg-white/80 backdrop-blur-sm border-b border-slate-200/60 px-4 sm:px-6 py-4 flex items-center gap-4">
       <button
         onClick={() => setSidebarOpen(true)}
         className="lg:hidden p-2 rounded-xl hover:bg-slate-100 transition-colors cursor-pointer"
       >
         <Icon name="menu" />
       </button>
-      <h1 className="font-[Playfair_Display,serif] text-lg font-bold text-[#2c3e50]">
-        {TABS.find((t) => t.id === tab)?.label}
-      </h1>
-      <span className="ml-auto text-xs text-[#6c7a89]">{fmtDate(new Date().toISOString())}</span>
+      <div className="flex-1">
+        <h1 className="font-[Playfair_Display,serif] text-lg font-bold text-[#2c3e50]">
+          Bonjour Ma&icirc;tre Igor
+        </h1>
+        <p className="text-xs text-[#6c7a89] mt-0.5">
+          {TABS.find((t) => t.id === tab)?.label} &middot; {fmtDate(new Date().toISOString())}
+        </p>
+      </div>
     </div>
   );
 
@@ -537,6 +542,15 @@ export default function DashboardClient({ data }: { data: AggData }) {
 
     return (
       <div className="space-y-6">
+        {/* Demo disclaimer */}
+        {data.isDemo && (
+          <div className="rounded-2xl bg-[#f5f0e8] border border-[#c8a96e]/30 px-5 py-3">
+            <p className="text-sm text-[#6c7a89] italic">
+              Les données affichées sont uniquement des exemples pour vous permettre de vous projeter. Elles seront remplacées par vos vraies données dès la première utilisation.
+            </p>
+          </div>
+        )}
+
         {/* Stat cards */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           <StatCard label="Total demandes" value={data.totalSubmissions} trend={data.trendSubs} />
@@ -572,19 +586,21 @@ export default function DashboardClient({ data }: { data: AggData }) {
           />
         </div>
 
-        {/* Donut + bars side by side */}
-        <div className="grid lg:grid-cols-3 gap-6">
+        {/* Donut + bars */}
+        <div className="grid lg:grid-cols-2 gap-6">
           <div className="bg-white rounded-2xl border border-slate-200/60 shadow-sm p-5">
             <h3 className="font-semibold text-sm text-[#2c3e50] mb-4">Répartition par domaine</h3>
             <DonutChart slices={donutSlices} />
           </div>
-          <div className="bg-white rounded-2xl border border-slate-200/60 shadow-sm p-5">
-            <h3 className="font-semibold text-sm text-[#2c3e50] mb-4">Top pages visitées</h3>
-            <BarRows items={data.topPages.map((p) => ({ label: p.page || "", count: p.count }))} max={maxPage} />
-          </div>
-          <div className="bg-white rounded-2xl border border-slate-200/60 shadow-sm p-5">
-            <h3 className="font-semibold text-sm text-[#2c3e50] mb-4">Top CTA cliqués</h3>
-            <BarRows items={data.topCta.map((c) => ({ label: c.label || "", count: c.count }))} max={maxCta} />
+          <div className="space-y-6">
+            <div className="bg-white rounded-2xl border border-slate-200/60 shadow-sm p-5">
+              <h3 className="font-semibold text-sm text-[#2c3e50] mb-4">Pages les plus visitées</h3>
+              <BarRows items={data.topPages.map((p) => ({ label: p.page || "", count: p.count }))} max={maxPage} />
+            </div>
+            <div className="bg-white rounded-2xl border border-slate-200/60 shadow-sm p-5">
+              <h3 className="font-semibold text-sm text-[#2c3e50] mb-4">Boutons les plus cliqués</h3>
+              <BarRows items={data.topCta.map((c) => ({ label: c.label || "", count: c.count }))} max={maxCta} />
+            </div>
           </div>
         </div>
 
@@ -633,6 +649,13 @@ export default function DashboardClient({ data }: { data: AggData }) {
   function renderSubmissions() {
     return (
       <div className="space-y-6">
+        {data.isDemo && (
+          <div className="rounded-2xl bg-[#f5f0e8] border border-[#c8a96e]/30 px-5 py-3">
+            <p className="text-sm text-[#6c7a89] italic">
+              Ces demandes sont fictives, uniquement pour vous permettre de vous projeter.
+            </p>
+          </div>
+        )}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           <StatCard label="Total demandes" value={data.totalSubmissions} />
           <StatCard label="Non lues" value={unread} accent={unread > 0} />
@@ -789,6 +812,13 @@ export default function DashboardClient({ data }: { data: AggData }) {
     const maxPage = data.topPages[0]?.count || 1;
     return (
       <div className="space-y-6">
+        {data.isDemo && (
+          <div className="rounded-2xl bg-[#f5f0e8] border border-[#c8a96e]/30 px-5 py-3">
+            <p className="text-sm text-[#6c7a89] italic">
+              Données de démonstration — les vrais chiffres apparaîtront après mise en ligne.
+            </p>
+          </div>
+        )}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           <StatCard label="Vues totales" value={data.totalViews} trend={data.trendViews} />
           <StatCard label="Clics CTA" value={data.totalClicks} trend={data.trendClicks} />

@@ -15,8 +15,121 @@ function daysAgo(n: number): Date {
   return d;
 }
 
+/* ================================================================
+   DEMO DATA — shown when no real data exists
+   ================================================================ */
+function generateDemoSubmissions() {
+  const now = new Date();
+  const demos = [
+    { firstName: "Amara", lastName: "Diallo", email: "amara.diallo@email.com", phone: "06 12 34 56 78", domaine: "sejour", urgence: "urgent", situationDescription: "Demande de renouvellement de titre de séjour en cours, convocation préfecture dans 10 jours.", daysAgo: 1, read: false },
+    { firstName: "Sophie", lastName: "Martin", email: "sophie.martin@email.com", phone: "06 98 76 54 32", domaine: "oqtf", urgence: "extreme", situationDescription: "OQTF reçue il y a 5 jours, besoin d'un recours en urgence devant le tribunal administratif.", daysAgo: 2, read: false },
+    { firstName: "Mohamed", lastName: "Benali", email: "m.benali@email.com", phone: "07 11 22 33 44", domaine: "asile", urgence: "normal", situationDescription: "Préparation du recours CNDA suite au rejet OFPRA. Audience prévue dans 2 mois.", daysAgo: 3, read: true },
+    { firstName: "Claire", lastName: "Dupont", email: "c.dupont@email.com", phone: "06 55 44 33 22", domaine: "contentieux", urgence: "normal", situationDescription: "Contestation d'une décision administrative de refus de permis de construire.", daysAgo: 4, read: true },
+    { firstName: "Youssef", lastName: "El Amrani", email: "y.elamrani@email.com", phone: "07 66 77 88 99", domaine: "famille", urgence: "urgent", situationDescription: "Regroupement familial refusé, souhait de contester la décision du consulat.", daysAgo: 5, read: true },
+    { firstName: "Fatou", lastName: "Camara", email: "f.camara@email.com", phone: "06 22 33 44 55", domaine: "nationalite", urgence: "normal", situationDescription: "Demande de naturalisation par décret, dossier en cours depuis 18 mois sans réponse.", daysAgo: 7, read: true },
+    { firstName: "Pierre", lastName: "Lefèvre", email: "p.lefevre@email.com", phone: "06 11 00 99 88", domaine: "fonction", urgence: "normal", situationDescription: "Litige avec l'administration concernant un refus d'avancement de grade.", daysAgo: 8, read: true },
+    { firstName: "Aïcha", lastName: "Traoré", email: "a.traore@email.com", phone: "07 44 55 66 77", domaine: "visa", urgence: "urgent", situationDescription: "Refus de visa long séjour conjoint de français, besoin de recours NANTES.", daysAgo: 10, read: true },
+    { firstName: "Jean-Marc", lastName: "Bernard", email: "jm.bernard@email.com", phone: "06 88 77 66 55", domaine: "urbanisme", urgence: "normal", situationDescription: "Recours contre un arrêté de péril concernant un immeuble dont je suis propriétaire.", daysAgo: 12, read: true },
+    { firstName: "Mariama", lastName: "Sylla", email: "m.sylla@email.com", phone: "07 33 22 11 00", domaine: "retention", urgence: "extreme", situationDescription: "Placement en rétention administrative au CRA, audience JLD demain.", daysAgo: 0, read: false },
+  ];
+
+  return demos.map((d, i) => {
+    const date = new Date(now);
+    date.setDate(date.getDate() - d.daysAgo);
+    return {
+      id: `demo-${i}`,
+      createdAt: date.toISOString(),
+      firstName: d.firstName,
+      lastName: d.lastName,
+      email: d.email,
+      phone: d.phone,
+      domaine: d.domaine,
+      urgence: d.urgence,
+      situationDescription: d.situationDescription,
+      read: d.read,
+    };
+  });
+}
+
+function generateDemoAnalytics() {
+  const events: { id: string; createdAt: string; type: "page_view" | "cta_click" | "form_start" | "form_submit"; page: string; label?: string }[] = [];
+  const now = new Date();
+  const pages = ["/", "/expertises", "/contact", "/expertises/droit-des-etrangers", "/expertises/droit-public", "/le-cabinet"];
+  const ctas = ["hero-consultation", "contact-header", "expertise-cta", "footer-contact", "urgence-banner"];
+
+  // Generate 14 days of traffic data with round numbers
+  const dailyViews = [30, 45, 50, 40, 60, 70, 80, 55, 65, 75, 90, 100, 85, 120];
+  const dailyClicks = [5, 8, 10, 7, 12, 15, 18, 10, 14, 16, 20, 25, 18, 30];
+
+  let eventId = 0;
+  for (let day = 13; day >= 0; day--) {
+    const date = new Date(now);
+    date.setDate(date.getDate() - day);
+
+    // Page views
+    const viewCount = dailyViews[13 - day];
+    for (let v = 0; v < viewCount; v++) {
+      const d = new Date(date);
+      d.setHours(8 + Math.floor(Math.random() * 12), Math.floor(Math.random() * 60));
+      events.push({
+        id: `demo-ev-${eventId++}`,
+        createdAt: d.toISOString(),
+        type: "page_view",
+        page: pages[Math.floor(Math.random() * pages.length)],
+      });
+    }
+
+    // CTA clicks
+    const clickCount = dailyClicks[13 - day];
+    for (let c = 0; c < clickCount; c++) {
+      const d = new Date(date);
+      d.setHours(9 + Math.floor(Math.random() * 10), Math.floor(Math.random() * 60));
+      events.push({
+        id: `demo-ev-${eventId++}`,
+        createdAt: d.toISOString(),
+        type: "cta_click",
+        page: "/",
+        label: ctas[Math.floor(Math.random() * ctas.length)],
+      });
+    }
+
+    // Form starts & submits (some days)
+    if (day < 10) {
+      const starts = Math.floor(clickCount * 0.4);
+      const submits = Math.floor(starts * 0.6);
+      for (let f = 0; f < starts; f++) {
+        const d = new Date(date);
+        d.setHours(10 + Math.floor(Math.random() * 8), Math.floor(Math.random() * 60));
+        events.push({
+          id: `demo-ev-${eventId++}`,
+          createdAt: d.toISOString(),
+          type: "form_start",
+          page: "/contact",
+        });
+      }
+      for (let f = 0; f < submits; f++) {
+        const d = new Date(date);
+        d.setHours(10 + Math.floor(Math.random() * 8), Math.floor(Math.random() * 60));
+        events.push({
+          id: `demo-ev-${eventId++}`,
+          createdAt: d.toISOString(),
+          type: "form_submit",
+          page: "/contact",
+        });
+      }
+    }
+  }
+
+  return events.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+}
+
 export default async function DashboardPage() {
-  const [submissions, analytics] = await Promise.all([readSubmissions(), readAnalytics()]);
+  const [realSubmissions, realAnalytics] = await Promise.all([readSubmissions(), readAnalytics()]);
+
+  // Use demo data when no real data exists
+  const isDemo = realSubmissions.length === 0 && realAnalytics.length === 0;
+  const submissions = isDemo ? generateDemoSubmissions() : realSubmissions;
+  const analytics = isDemo ? generateDemoAnalytics() : realAnalytics;
 
   const now = new Date();
   const today = getDayKey(now.toISOString());
@@ -127,6 +240,7 @@ export default async function DashboardPage() {
   }));
 
   const aggregated = {
+    isDemo,
     totalSubmissions: submissions.length,
     unreadCount,
     urgentCount,
