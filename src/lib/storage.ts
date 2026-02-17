@@ -1,7 +1,10 @@
 import { promises as fs } from "fs";
 import path from "path";
 
-const STORAGE_DIR = path.join(process.cwd(), "storage");
+// On Vercel, the filesystem is read-only except /tmp
+const STORAGE_DIR = process.env.VERCEL
+  ? path.join("/tmp", "storage")
+  : path.join(process.cwd(), "storage");
 const SUBMISSIONS_FILE = path.join(STORAGE_DIR, "submissions.json");
 const ANALYTICS_FILE = path.join(STORAGE_DIR, "analytics.json");
 const MAX_ANALYTICS = 10000;
@@ -39,14 +42,19 @@ async function ensureFile(filePath: string, defaultContent: string) {
 }
 
 export async function readSubmissions(): Promise<Submission[]> {
-  await ensureFile(SUBMISSIONS_FILE, "[]");
-  const raw = await fs.readFile(SUBMISSIONS_FILE, "utf-8");
-  return JSON.parse(raw);
+  try {
+    await ensureFile(SUBMISSIONS_FILE, "[]");
+    const raw = await fs.readFile(SUBMISSIONS_FILE, "utf-8");
+    return JSON.parse(raw);
+  } catch {
+    return [];
+  }
 }
 
 export async function saveSubmission(sub: Submission): Promise<void> {
   const subs = await readSubmissions();
   subs.unshift(sub);
+  await ensureFile(SUBMISSIONS_FILE, "[]");
   await fs.writeFile(SUBMISSIONS_FILE, JSON.stringify(subs, null, 2), "utf-8");
 }
 
@@ -71,14 +79,19 @@ export async function deleteSubmission(id: string): Promise<boolean> {
 }
 
 export async function readAnalytics(): Promise<AnalyticsEvent[]> {
-  await ensureFile(ANALYTICS_FILE, "[]");
-  const raw = await fs.readFile(ANALYTICS_FILE, "utf-8");
-  return JSON.parse(raw);
+  try {
+    await ensureFile(ANALYTICS_FILE, "[]");
+    const raw = await fs.readFile(ANALYTICS_FILE, "utf-8");
+    return JSON.parse(raw);
+  } catch {
+    return [];
+  }
 }
 
 export async function saveEvent(event: AnalyticsEvent): Promise<void> {
   const events = await readAnalytics();
   events.unshift(event);
   const trimmed = events.slice(0, MAX_ANALYTICS);
+  await ensureFile(ANALYTICS_FILE, "[]");
   await fs.writeFile(ANALYTICS_FILE, JSON.stringify(trimmed, null, 2), "utf-8");
 }
